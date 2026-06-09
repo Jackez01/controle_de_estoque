@@ -47,7 +47,37 @@ def encontrar_produto(id: int, db: Session = Depends(get_db)):
     return encontrar
 
 # Rota para atualizar o produto
+@app.put('/produtos/{id}',  response_model=schemas.ProdutoResponse)
+def atualizar_produto(id: int, produto: schemas.ProdutoCreate, db: Session = Depends(get_db)):
+    atualizar = db.query(models.Produto).filter(models.Produto.id == id).first()
+    if not atualizar:
+        raise HTTPException(
+            status_code=404,
+            detail= 'Produto não encontrado'
+        )
+    atualizar.nome = produto.nome
+    atualizar.quantidade = produto.quantidade
+    atualizar.valor = produto.valor
+    atualizar.descricao = produto.descricao
+    
+    db.commit()
+    db.refresh(atualizar)
+    return atualizar
 
+
+
+
+@app.delete('/produtos/{id}')
+def deletar_produto(id:int, db: Session = Depends(get_db)):
+    excluir = db.query(models.Produto).filter(models.Produto.id ==id).first()
+    if not excluir:
+        raise HTTPException(
+            status_code=404,
+            detail='Produto não encontrado'
+        )
+    db.delete(excluir)
+    db.commit()
+    return {'message': 'Produto excluido com sucesso'}
 
 
   
