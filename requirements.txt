@@ -1,0 +1,5 @@
+fastapi #cria a API, cria rotas, requisições HTTP, envia respostas, gera documentação Swagger, faz injeção de dependências
+uvicorn #serivdor que executa a aplicação FastAPI, sem ele a api não sobe
+sqlalchemy # faz a ponte entre o python e o postgreSQL
+psycopg2-binary # driver que coneccta o python ao PostgreSQL
+pydantic # faz a validação de dados 
