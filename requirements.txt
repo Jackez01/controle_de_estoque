@@ -3,3 +3,4 @@ uvicorn #serivdor que executa a aplicação FastAPI, sem ele a api não sobe
 sqlalchemy # faz a ponte entre o python e o postgreSQL
 psycopg2-binary # driver que coneccta o python ao PostgreSQL
 pydantic # faz a validação de dados 
+ollama # IA

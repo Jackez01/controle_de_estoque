@@ -80,4 +80,11 @@ def deletar_produto(id:int, db: Session = Depends(get_db)):
     return {'message': 'Produto excluido com sucesso'}
 
 
-  
+
+# Aplicando as rotas do assistente de IA
+@app.post('/assistente/')
+def requisicao(produto: schemas.PerguntaIA, db: Session = Depends(get_db)):
+    texto_pergunta = produto.pergunta
+    verificar = db.query(models.Produto).all()
+
+

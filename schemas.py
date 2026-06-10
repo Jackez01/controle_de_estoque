@@ -13,5 +13,11 @@ class ProdutoResponse(BaseModel):
     valor: float
     descricao: str
 
+class PerguntaIA(BaseModel):
+    pergunta: str
+
+class RespostaIA(BaseModel):
+    resposta: str
+
     class Config: #classe para que o pydantic leia os atributos dos objetos ORM
         from_attributes=True
